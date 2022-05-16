@@ -1,0 +1,184 @@
+﻿<Page x:Class="ASUMED.Control.DoctorExePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ASUMED.Control"
+      mc:Ignorable="d" 
+      Width="350" Height="400"
+      Title="DoctorExePage" Loaded="PageLoaded">
+    <Page.Resources>
+        <Style TargetType="Label" x:Key="VaribleLabel">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+        <Style TargetType="Border" x:Key="ValueBorder">
+            <Setter Property="Background" Value="#FFB9EAFF"/>
+            <Setter Property="CornerRadius" Value="7"/>
+            <Setter Property="Margin" Value="0 5 0 5"/>
+            <Setter Property="MinHeight" Value="20"/>
+            <Setter Property="MaxHeight" Value="20"/>
+            <Setter Property="MinWidth" Value="175"/>
+        </Style>
+        <Style TargetType="TextBox" x:Key="ValueTextBox">
+            <Setter Property="Width" Value="175"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Myriad Pro"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Border" x:Key="BtnC">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Background" Value="#FFB9EAFF"/>
+            <Setter Property="MaxHeight" Value="30"/>
+            <Setter Property="MinWidth" Value="100"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="Border" x:Key="ContexBorder">
+            <Setter Property="CornerRadius" Value="7"/>
+            <Setter Property="Background" Value="#FFB9EAFF"/>
+        </Style>
+        <Style TargetType="Label" x:Key="ContextLabel">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" >
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel x:Name="VaribalesLabel" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
+                        <Label Style="{StaticResource VaribleLabel}" Content="ПІБ"/>
+                        <Label Style="{StaticResource VaribleLabel}" Content="Посада"/>
+                        <Label Style="{StaticResource VaribleLabel}" Content="Спеціалізація"/>
+                        <Label Style="{StaticResource VaribleLabel}" Content="ID Паспорту"/>
+                        <Label Style="{StaticResource VaribleLabel}" Content="Логін"/>
+                        <Label Style="{StaticResource VaribleLabel}" Content="Пароль"/>
+                        <StackPanel x:Name="AddValuesLabeles" Orientation="Vertical">
+                            <Label Style="{StaticResource VaribleLabel}" Content="Стать"/>
+                            <Label Style="{StaticResource VaribleLabel}" Content="Дата народження"/>
+                            <Label Style="{StaticResource VaribleLabel}" Content="Графік роботи"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel x:Name="ValuesStackPanel" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
+                        <Border Style="{StaticResource ValueBorder}">
+                            <TextBox x:Name="TextBoxFLValue" Style="{StaticResource ValueTextBox}" PreviewTextInput="DBControl_StrTextPreview"/>
+                        </Border>
+                        <Border  Name="BorderPosition" Style="{StaticResource ValueBorder}" MouseDown="PositionMouseDown" >
+                            <TextBox x:Name="TextBoxPositionValue" Cursor="Arrow" Style="{StaticResource ValueTextBox}" IsReadOnly="True" Focusable="False"/>
+                        </Border>
+                        <Border Name="BorderSpecialization" Style="{StaticResource ValueBorder}" MouseDown="SpecializationMouseDown">
+                            <TextBox x:Name="TextBoxSpecializationValue" Cursor="Arrow" Style="{StaticResource ValueTextBox}" IsReadOnly="True" Focusable="False"/>
+                        </Border>
+                        <Border Style="{StaticResource ValueBorder}">
+                            <TextBox x:Name="TextBoxIDPassValue" Style="{StaticResource ValueTextBox}" PreviewTextInput="DBControl_IntTextPreview"/>
+                        </Border>
+                        <Border Style="{StaticResource ValueBorder}">
+                            <TextBox x:Name="TextBoxLogValue" Style="{StaticResource ValueTextBox}"/>
+                        </Border>
+                        <Border Style="{StaticResource ValueBorder}">
+                            <TextBox x:Name="TextBoxPassValue" Style="{StaticResource ValueTextBox}"/>
+                        </Border>
+                        <StackPanel x:Name="AddValuesStackPanel"  Orientation="Vertical">
+                            <Border Name ="BorderSex" Style="{StaticResource ValueBorder}" MouseDown="SexMouseDown">
+                                <TextBox x:Name="TextBoxSexValue" IsReadOnly="True" Focusable="False" Cursor="Arrow" Style="{StaticResource ValueTextBox}"/>
+                            </Border>
+                            <Border Style="{StaticResource ValueBorder}">
+                                <TextBox x:Name="TextBoxDateOfBirthValue" Style="{StaticResource ValueTextBox}"/>
+                            </Border>
+                            <Border Name="BorderShedule" Style="{StaticResource ValueBorder}" MouseDown="SheduleMouseDown" >
+                                <TextBox x:Name="TextBoxSheduleValue" IsReadOnly="True" Focusable="False" Cursor="Arrow" Style="{StaticResource ValueTextBox}"/>
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+            <Grid x:Name="ContextPosition" Height="75" Width="{Binding Path=ActualWidth, ElementName=BorderPosition}" Margin="140.5 -80 0 0" Visibility="Hidden">
+                <Border Style="{StaticResource ContexBorder}" BorderThickness="2" BorderBrush="Blue">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF2AABE2"/>
+                            <GradientStop Color="#FF84DBFF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Orientation="Vertical" x:Name="StackPanelPositionValues">
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+            <Grid x:Name="ContextSpecialization" Height="200" Width="{Binding Path=ActualWidth, ElementName=BorderSpecialization}" Margin="140.5 110 0 0" Visibility="Hidden">
+                <Border Style="{StaticResource ContexBorder}" BorderThickness="1" BorderBrush="Blue">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF2AABE2"/>
+                            <GradientStop Color="#FF84DBFF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid>
+                        <ScrollViewer VerticalScrollBarVisibility="Visible">
+                            <StackPanel Orientation="Vertical" x:Name="StackPanelSpecializationValues">
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+            </Grid>
+            <Grid x:Name="ContexSex" Height="100" Width="{Binding Path=ActualWidth, ElementName=BorderSex}" Margin="140.5 -10 0 0" Visibility="Hidden">
+                <Border Style="{StaticResource ContexBorder}" BorderThickness="1" BorderBrush="Blue">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF2AABE2"/>
+                            <GradientStop Color="#FF84DBFF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid>
+                        <StackPanel Orientation="Vertical" x:Name="StackPanelSexValues">
+                            
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+            <Grid x:Name="ContextShedule" Height="75" Width="{Binding Path=ActualWidth, ElementName=BorderShedule}" Margin="140.5 135 0 0" Visibility="Hidden">
+                <Border Style="{StaticResource ContexBorder}" BorderThickness="1" BorderBrush="Blue">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF2AABE2"/>
+                            <GradientStop Color="#FF84DBFF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid>
+                        <StackPanel Orientation="Vertical" x:Name="StackPanelSheduleValues">
+
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+        <StackPanel Grid.Row="1" Grid.RowSpan="2" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Border x:Name="ExeBorder" Style="{StaticResource BtnC}" MouseDown="ExecuteBtn">
+                <Label HorizontalAlignment="Center" FontSize="15" Foreground="Black" />
+            </Border>
+            <Border Style="{StaticResource BtnC}" MouseDown="CloseWin">
+                <Label HorizontalAlignment="Center" FontSize="15" Foreground="Black">
+                    Відмова
+                </Label>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,177 @@
+﻿<Window x:Class="ASUMED.ControlWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ASUMED"
+        xmlns:en ="clr-namespace:ASUMED"
+        mc:Ignorable="d" 
+        Title="ControlWindow" 
+        WindowStyle="None"
+        MaxHeight = "{x:Static SystemParameters.MaximizedPrimaryScreenHeight}"
+        MaxWidth = "{x:Static SystemParameters.MaximizedPrimaryScreenWidth}"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        Background="Transparent">
+    <Window.Resources>
+        <Style TargetType="Border" x:Key="UpBorder">
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Background" Value="#FFC8F0FF"/>
+            <Setter Property="Margin" Value="6 1 6 1"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style TargetType="Label" x:Key="UpLabel">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Myriad Pro"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        <Style x:Key="RectBorderStyle" TargetType="Rectangle">
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Fill" Value="Transparent" />
+            <Setter Property="Tag" Value="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+            <EventSetter Event="MouseLeftButtonDown" Handler="Resize_Init"/>
+            <EventSetter Event="MouseLeftButtonUp" Handler="Resize_End"/>
+            <EventSetter Event="MouseMove" Handler="Resizeing_Form"/>
+        </Style>
+    </Window.Resources>
+    <Border CornerRadius="15" Background="#FF29ABE2">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="28"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Background="Transparent" Grid.Row="0" VerticalAlignment="Top" MouseDown="WindowMove" MouseMove="MouseNormalOutMax" MouseLeftButtonDown="WindowNormMaxDoubleCLick" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="75"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="PagesB" Grid.Column="0"  Margin="90,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left"  
+                            ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                    <Border Style="{StaticResource UpBorder}" Tag="{x:Static en:TPage.Doctors}" Cursor="Hand" MouseDown="ChangePage" >
+                        <Label Style="{StaticResource UpLabel}" Content="Лікарі"/>
+                    </Border>
+                    <Border Style="{StaticResource UpBorder}" Tag="{x:Static en:TPage.Patients}" Cursor="Hand" MouseDown="ChangePage">
+                        <Label Style="{StaticResource UpLabel}" Content="Пацієнти"/>
+                    </Border>
+                    <Border Style="{StaticResource UpBorder}" Tag="{x:Static en:TPage.Procedures}" Cursor="Hand" MouseDown="ChangePage">
+                        <Label Style="{StaticResource UpLabel}"  Content="Процедури" />
+                    </Border>
+                    <Border Style="{StaticResource UpBorder}"  Tag="{x:Static en:TPage.Pills}" Cursor="Hand" MouseDown="ChangePage">
+                        <Label Style="{StaticResource UpLabel}" Content="Забезпечення"/>
+                    </Border>
+                    <Border Style="{StaticResource UpBorder}" Tag="{x:Static en:TPage.Help}" Cursor="Hand" MouseDown="ChangePage">
+                        <Label Style="{StaticResource UpLabel}" Content="Допомога"/>
+                    </Border>
+                    <!--<Border Style="{StaticResource UpBorder}" Tag="{x:Static en:TPage.Configuration}" Cursor="Hand" MouseDown="ChangePage">
+                        <Label Style="{StaticResource UpLabel}" Content="Налаштування"/>
+                    </Border>-->
+                    <Border Style="{StaticResource UpBorder}" Tag="{x:Static en:TPage.About}" Cursor="Hand" MouseDown="ChangePage">
+                        <Label Style="{StaticResource UpLabel}" Content="Про програму"/>
+                    </Border>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Width="75" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Image Name="LineImg" Width="25" Margin="0 7 0 7" MouseDown="MinimizedWindow" VerticalAlignment="Bottom">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="Sources\Line.png"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsMouseOver, ElementName = LineImg}" Value="True">
+                                        <Setter Property="Source" Value="Sources\lineact.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                    <Image Name="SquareImg" Width="25" Margin="0 7 0 7" MouseDown="NormMaxWindow" >
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="Sources\Square.png"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsMouseOver, ElementName = SquareImg}" Value="True">
+                                        <Setter Property="Source" Value="Sources\SquareAct.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                    <Image Name="CrossImg" Width="25" Margin="0,7,0,7" MouseDown="CloseWindow">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="Sources\Cross.png"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsMouseOver, ElementName = CrossImg}" Value="True">
+                                        <Setter Property="Source" Value="Sources\CrossAct.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1" >
+                <Frame x:Name="WindowContent" NavigationUIVisibility="Hidden" Margin="10"/>
+            </Grid>
+            <Ellipse  Grid.Row="1" x:Name="ElipseImage"  Height="35" Width="35" HorizontalAlignment="Left" Visibility="Visible"  VerticalAlignment="Top" Margin="10,-27,0,0" MouseDown="WindowMove">
+                <Ellipse.Fill>
+                    <ImageBrush Stretch="Uniform"
+                            ImageSource="Sources/MedBlue.png">
+                    </ImageBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Grid Grid.Row="0" Grid.RowSpan="2">
+                <Rectangle x:Name="leftSizeGrip"
+                    Width="7"
+                    HorizontalAlignment="Left"
+                    Cursor="SizeWE"
+                    Style="{StaticResource RectBorderStyle}" />
+                <Rectangle x:Name="rightSizeGrip"
+                    Width="7"
+                    HorizontalAlignment="Right"
+                    Cursor="SizeWE"
+                    Style="{StaticResource RectBorderStyle}" />
+                <Rectangle x:Name="topSizeGrip"
+                    Height="7"
+                    VerticalAlignment="Top"
+                    Cursor="SizeNS"
+                    Style="{StaticResource RectBorderStyle}" />
+                <Rectangle x:Name="bottomSizeGrip"
+                    Height="7"
+                    VerticalAlignment="Bottom"
+                    Cursor="SizeNS"
+                    Style="{StaticResource RectBorderStyle}" />
+                <Rectangle Name="topLeftSizeGrip"
+                    Width="7"
+                    Height="7"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Cursor="SizeNWSE"
+                    Style="{StaticResource RectBorderStyle}" />
+                <Rectangle Name="bottomRightSizeGrip"
+                    Width="7"
+                    Height="7"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Cursor="SizeNWSE"
+                    Style="{StaticResource RectBorderStyle}" />
+                <Rectangle Name="topRightSizeGrip"
+                    Width="7"
+                    Height="7"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Cursor="SizeNESW"
+                    Style="{StaticResource RectBorderStyle}" />
+                <Rectangle Name="bottomLeftSizeGrip"
+                    Width="7"
+                    Height="7"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Cursor="SizeNESW"
+                    Style="{StaticResource RectBorderStyle}" />
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
