@@ -1212,11 +1212,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\ASUVS\\ASUMED\\ASUMED\\ASUMED.csproj",
+      "projectUniqueName": "C:\\Projects\\GitHub\\ASU-MED\\ASUMED\\ASUMED\\ASUMED.csproj",
       "projectName": "ASUMED",
-      "projectPath": "C:\\Projects\\ASUVS\\ASUMED\\ASUMED\\ASUMED.csproj",
+      "projectPath": "C:\\Projects\\GitHub\\ASU-MED\\ASUMED\\ASUMED\\ASUMED.csproj",
       "packagesPath": "C:\\Users\\igorf\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\ASUVS\\ASUMED\\ASUMED\\obj\\",
+      "outputPath": "C:\\Projects\\GitHub\\ASU-MED\\ASUMED\\ASUMED\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\igorf\\AppData\\Roaming\\NuGet\\NuGet.Config",

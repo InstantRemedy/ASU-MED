@@ -20,7 +20,7 @@ namespace ASUMED
             VARIBLE = $"({DocID}, {SpecID})";
             return base.cmdAddDB();
         }
-        public override string cmdUpdateDB(string varibleUpdate, string valueUpdate, string varible, string Value)
+        public override string cmdUpdateDB(string varibleUpdate, object valueUpdate, string varible, object Value)
         {
             return base.cmdUpdateDB(varibleUpdate, valueUpdate, varible, Value);
         }

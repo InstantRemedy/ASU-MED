@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zCtdmZo3mUkAYMnA0kxsgKC0u/ggt3c8gXwt+8/rYlXqv1xkGBAlL0ifaTnBspPWENgAS89m4zcE1GtydwEy9g==",
+  "dgSpecHash": "y8HQCud7h6V5ZxpxOhyHusMHH90gfJzyAQJTgbF8BoLH35npQhuMMpgCM1gZnDY2CgjlImK7efntJAYdK4o+Fw==",
   "success": true,
-  "projectFilePath": "C:\\Projects\\ASUVS\\ASUMED\\ASUMED\\ASUMED.csproj",
+  "projectFilePath": "C:\\Projects\\GitHub\\ASU-MED\\ASUMED\\ASUMED\\ASUMED.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\igorf\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\igorf\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
